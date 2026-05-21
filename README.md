@@ -358,7 +358,7 @@ Developed an end-to-end Fitness Tracker Data Analysis dashboard using Power BI t
 
 📧 Email: saibandi1985@gmail.com
 
-🔗 LinkedIn: https://www.linkedin.com/in/sai-kumar-bandi
+🔗 LinkedIn:https://www.linkedin.com/in/bandisai07/
 
 💼 Data Analyst | Power BI Developer | Business Intelligence Analyst
 
