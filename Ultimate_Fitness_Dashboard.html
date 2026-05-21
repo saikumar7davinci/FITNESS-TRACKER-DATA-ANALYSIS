@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Fitness Tracker Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#1e293b;
+}
+
+.header {
+    background:linear-gradient(90deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.container {
+    padding:20px;
+}
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.card {
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin:0;
+    color:#64748b;
+}
+
+.card p {
+    font-size:30px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.section-title {
+    margin:30px 0 15px;
+    font-size:24px;
+}
+
+.charts {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:20px;
+}
+
+.chart-box {
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+th {
+    background:#0f172a;
+    color:white;
+}
+
+th,td {
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.progress {
+    height:22px;
+    background:#e2e8f0;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.progress-bar {
+    height:100%;
+    background:#16a34a;
+    text-align:center;
+    color:white;
+    font-size:12px;
+}
+
+.calculator {
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.calculator input, .calculator select {
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+}
+
+.calculator button {
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.result {
+    margin-top:20px;
+    background:#eff6ff;
+    padding:15px;
+    border-radius:12px;
+}
+
+.footer {
+    margin-top:40px;
+    text-align:center;
+    padding:20px;
+    color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Ultimate Fitness Tracker Analysis Dashboard</h1>
+    <p>Single Page Business Intelligence Dashboard</p>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">Overall Business Performance</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Clients</h3>
+        <p>100</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Trainers</h3>
+        <p>15</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Revenue</h3>
+        <p>₹38,40,000</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Expenses</h3>
+        <p>₹14,20,000</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Profit</h3>
+        <p>₹24,20,000</p>
+    </div>
+</div>
+
+<h2 class="section-title">Monthly Performance Tracking</h2>
+
+<div class="charts">
+    <div class="chart-box">
+        <canvas id="monthlyRevenueChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <canvas id="expenseProfitChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <canvas id="membershipChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <canvas id="paymentModeChart"></canvas>
+    </div>
+</div>
+
+<h2 class="section-title">Membership Status Tracking</h2>
+
+<table>
+<tr>
+<th>Membership Tier</th>
+<th>Active</th>
+<th>Expired</th>
+<th>Status Overview</th>
+</tr>
+
+<tr>
+<td>Platinum</td>
+<td>22</td>
+<td>3</td>
+<td>
+<div class="progress">
+<div class="progress-bar" style="width:88%">88%</div>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>Gold</td>
+<td>35</td>
+<td>8</td>
+<td>
+<div class="progress">
+<div class="progress-bar" style="width:81%">81%</div>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>Silver</td>
+<td>24</td>
+<td>8</td>
+<td>
+<div class="progress">
+<div class="progress-bar" style="width:75%">75%</div>
+</div>
+</td>
+</tr>
+
+</table>
+
+<h2 class="section-title">Membership Alerts</h2>
+
+<table>
+<tr>
+<th>Member</th>
+<th>Status</th>
+<th>Expiry</th>
+</tr>
+
+<tr>
+<td>Rahul Sharma</td>
+<td>Expiring Soon</td>
+<td>2026-05-18</td>
+</tr>
+
+<tr>
+<td>Anjali Verma</td>
+<td>Expired</td>
+<td>2026-04-29</td>
+</tr>
+
+<tr>
+<td>Vikram Rao</td>
+<td>Cancelled</td>
+<td>-</td>
+</tr>
+
+</table>
+
+<h2 class="section-title">Fitness & Health Calculator</h2>
+
+<div class="calculator">
+
+<input type="number" id="age" placeholder="Enter Age">
+<input type="number" id="weight" placeholder="Enter Weight (kg)">
+<input type="number" id="height" placeholder="Enter Height (cm)">
+
+<select id="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select>
+
+<select id="activity">
+<option value="1.2">Sedentary</option>
+<option value="1.375">Light Exercise</option>
+<option value="1.55">Moderate Exercise</option>
+<option value="1.725">Heavy Exercise</option>
+</select>
+
+<button onclick="calculateFitness()">Calculate</button>
+
+<div class="result" id="result">
+Enter values to calculate BMI, BMR and TDEE
+</div>
+
+</div>
+
+<h2 class="section-title">Client Profile</h2>
+
+<table>
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Membership</th>
+<th>Status</th>
+<th>Expiry Date</th>
+</tr>
+
+<tr>
+<td>Sai Kumar</td>
+<td>24</td>
+<td>Male</td>
+<td>Platinum</td>
+<td>Active</td>
+<td>2026-12-31</td>
+</tr>
+
+<tr>
+<td>Priya Singh</td>
+<td>29</td>
+<td>Female</td>
+<td>Gold</td>
+<td>Expiring Soon</td>
+<td>2026-05-15</td>
+</tr>
+
+</table>
+
+<div class="footer">
+Dashboard Generated Successfully
+<br><br>
+Excel Sheets Detected: data, Payments, Expenses, ColorCodes
+</div>
+
+</div>
+
+<script>
+
+new Chart(document.getElementById('monthlyRevenueChart'), {
+    type:'line',
+    data:{
+        labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets:[{
+            label:'Revenue',
+            data:[200000,180000,250000,270000,320000,280000,350000,400000,380000,420000,450000,500000]
+        }]
+    },
+    options:{
+        responsive:true,
+        plugins:{
+            title:{
+                display:true,
+                text:'Monthly Revenue'
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById('expenseProfitChart'), {
+    type:'bar',
+    data:{
+        labels:['Jan','Feb','Mar','Apr','May','Jun'],
+        datasets:[
+        {
+            label:'Expenses',
+            data:[90000,80000,120000,110000,130000,125000]
+        },
+        {
+            label:'Profit',
+            data:[110000,100000,130000,160000,190000,155000]
+        }
+        ]
+    },
+    options:{
+        responsive:true,
+        plugins:{
+            title:{
+                display:true,
+                text:'Expenses vs Profit'
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById('membershipChart'), {
+    type:'doughnut',
+    data:{
+        labels:['Platinum','Gold','Silver'],
+        datasets:[{
+            data:[25,43,32]
+        }]
+    },
+    options:{
+        plugins:{
+            title:{
+                display:true,
+                text:'Membership Distribution'
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById('paymentModeChart'), {
+    type:'pie',
+    data:{
+        labels:['Cash','Card','Online'],
+        datasets:[{
+            data:[35,30,35]
+        }]
+    },
+    options:{
+        plugins:{
+            title:{
+                display:true,
+                text:'Payment Mode Distribution'
+            }
+        }
+    }
+});
+
+function calculateFitness() {
+    const age = parseFloat(document.getElementById('age').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const gender = document.getElementById('gender').value;
+    const activity = parseFloat(document.getElementById('activity').value);
+
+    const bmi = (weight / ((height/100)*(height/100))).toFixed(2);
+
+    let bmr = 0;
+
+    if(gender === 'male') {
+        bmr = 10*weight + 6.25*height - 5*age + 5;
+    } else {
+        bmr = 10*weight + 6.25*height - 5*age - 161;
+    }
+
+    const tdee = (bmr * activity).toFixed(2);
+
+    document.getElementById('result').innerHTML = `
+        <h3>Health Metrics</h3>
+        <p><strong>BMI:</strong> ${bmi}</p>
+        <p><strong>BMR:</strong> ${bmr.toFixed(2)} Calories/day</p>
+        <p><strong>TDEE:</strong> ${tdee} Calories/day</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
